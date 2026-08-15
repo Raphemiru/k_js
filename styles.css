@@ -7,6 +7,14 @@ body {
 }
 
 main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.envelope {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -24,6 +32,31 @@ main {
     perspective: 1000px;
     transform-style: preserve-3d;
 }
+
+.envelope:hover {
+    transform: translate(1px, -8px) rotate(-10deg);
+}
+
+/* flap animations */
+.flap {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 52%);
+    background:
+        linear-gradient(30deg, transparent 49.25%, #d8d8d8 49.25%, #d8d8d8 50.75%, transparent 50.75%),
+        linear-gradient(150deg, transparent 49.25%, #d8d8d8 49.25%, #d8d8d8 50.75%, transparent 50.75%);
+    pointer-events: none;
+    transform-origin: top center;
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease;
+    will-change: transform, opacity;
+}
+
+.flap-close {}
+
+.flap-open {}
 
 /* button design */
 .button {
