@@ -7,6 +7,14 @@ body {
 }
 
 main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.envelope {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -25,12 +33,12 @@ main {
     transform-style: preserve-3d;
 }
 
-main:hover {
-    transform:
-        translate(1px, -8px);
+.envelope:hover {
+    transform: translate(1px, -8px) rotate(-10deg);
 }
 
-main::before {
+/* flap animations */
+.flap {
     content: "";
     position: absolute;
     inset: 0;
@@ -46,38 +54,11 @@ main::before {
     will-change: transform, opacity;
 }
 
-main>* {
-    position: relative;
-    z-index: 1;
-}
+.flap-close {}
 
-main.open {
-    transform: translate(1px, -14px) scale(1.02);
-}
+.flap-open {}
 
-main.open::before {
-    transform: translateY(-20px) rotateX(65deg);
-    opacity: 0.95;
-}
-
-main.open .button {
-    transform: translateY(12px) scale(0.96);
-}
-
-main.close {
-    transform: translate(1px, -8px) scale(1);
-}
-
-main.close::before {
-    transform: translateY(0) rotateX(0deg);
-    opacity: 1;
-}
-
-main.close .button {
-    transform: translateY(0) scale(1);
-}
-
-/* From Uiverse.io by TCdesign-dev */
+/* button design */
 .button {
     align-items: center;
     appearance: none;
